@@ -62,7 +62,7 @@ async def community_advertise_process(message: str):
             for i in default_list:
                 if i in users:
                     users.remove(i)
-            await asyncio.gather(*[asyncio.create_task(sub_client.start_chat(users, message)) for _ in range(50)])
+            await asyncio.gather(*[asyncio.create_task(sub_client.start_chat(users, message)) for _ in range(2)])
         except aminofix.asyncfix.lib.util.exceptions.VerificationRequired as e:
             print(">> Error - VerificationRequired...")
             verification_link = e.args[0]["url"]
@@ -84,7 +84,7 @@ async def global_advertise_process(message: str):
             for i in default_list:
                 if i in users:
                     users.remove(i)
-            await asyncio.gather(*[asyncio.create_task(client.start_chat(users, message)) for _ in range(50)])
+            await asyncio.gather(*[asyncio.create_task(client.start_chat(users, message)) for _ in range(2)])
         except aminofix.asyncfix.lib.util.exceptions.VerificationRequired as e:
             print(">> Error - VerificationRequired...")
             verification_link = e.args[0]["url"]
@@ -124,7 +124,7 @@ async def using_one_account(message: str):
     while True:
         try:
             print(">> Advertising To Selected User...")
-            await asyncio.gather(*[asyncio.create_task(sub_client.start_chat([client.userId, user_Id], message)) for _ in range(50)])
+            await asyncio.gather(*[asyncio.create_task(sub_client.start_chat([client.userId, user_Id], message)) for _ in range(2)])
         except aminofix.asyncfix.lib.util.exceptions.VerificationRequired as e:
             print(">> Error - VerificationRequired...")
             verification_link = e.args[0]["url"]
@@ -150,7 +150,7 @@ async def using_multiple_accounts(message: str):
             await client.login(email=email, password=password)
             print(f">> {email} Logged In...")
             print(">> Advertising To Selected User...")
-            await asyncio.gather(*[asyncio.create_task(sub_client.start_chat(user_Id, message)) for _ in range(50)])
+            await asyncio.gather(*[asyncio.create_task(sub_client.start_chat(user_Id, message)) for _ in range(2)])
         except aminofix.asyncfix.lib.util.exceptions.VerificationRequired as e:
             print(">> Error - VerificationRequired...")
             verification_link = e.args[0]["url"]
