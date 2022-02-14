@@ -57,7 +57,7 @@ async def community_advertise_process(message: str):
     while True:
         try:
             print(">> Advertising...")
-            online_users = await sub_client.get_online_users(size=150)
+            online_users = await sub_client.get_online_users(size=1000)
             users = advertise(online_users)
             for i in default_list:
                 if i in users:
@@ -79,7 +79,7 @@ async def global_advertise_process(message: str):
     while True:
         try:
             print(">> Advertising...")
-            online_users = await sub_client.get_online_users(size=150)
+            online_users = await sub_client.get_online_users(size=1000)
             users = advertise(online_users)
             for i in default_list:
                 if i in users:
